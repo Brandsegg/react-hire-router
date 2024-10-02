@@ -7,11 +7,15 @@ function HireForm({ person, hiredPeople, setHiredPeople }) {
 
   function handleSubmit(event) {
     event.preventDefault()
+    
+    person.wage = wage
     if (!hiredPeople.includes(person)) {
       hirePerson();
+      
       navigate('/');
-    }else{
-      alert('Person already hired!')
+    }
+    else{
+      navigate('/');
     }
 
   }
@@ -30,7 +34,9 @@ function HireForm({ person, hiredPeople, setHiredPeople }) {
         onChange={e => setWage(e.target.value)}
         value={wage}
       />
-      <button type="submit">Hire</button>
+      <button type="submit">{!person.wage ? 'Hire' : 'Edit'}</button>
+      
+
 
     </form>
   )
